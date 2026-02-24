@@ -1,0 +1,42 @@
+$TTL    86400
+@       IN      SOA     harry.hogwarts.david. admin.hogwarts.david. (
+                        9999999999999999999999999          ; Número de serie
+                        3600        ; Actualización (Refresh)
+                        1800        ; Reintento (Retry)
+                        1209600     ; Caducidade (Expire)
+                        86400 )     ; TTL mínimo
+
+; Servidores de nomes
+@       IN      NS      harry.hogwarts.david.
+@       IN      NS      hermione.hogwarts.david.
+
+; Rexistros A dos servidores de nomes
+harry     IN      A       192.168.14.10
+hermione     IN      A       192.168.14.11
+
+; Rexistros A principais
+@       IN      A       192.168.14.10
+hagrid     IN      A       192.168.14.50
+ron     IN      A       192.168.14.154
+draco  IN      A       192.168.14.54
+malfoy  IN      A       192.168.14.60
+malfoy  IN      A       192.168.14.61
+
+
+; Alias (CNAME)
+crookshanks     IN      CNAME   ron
+
+; Rexistro MX (servidor de correo)
+@       IN      MX      10 draco.hogwarts.david.
+
+; Rexistro TXT
+info        IN      TXT    "Expelliarmus!"
+
+
+$ORIGIN ravenclaw.hogwarts.david.
+luna     IN      A      172.21.14.40
+cho      IN      A      30.40.50.60
+
+$ORIGIN gryffindor.hogwarts.david.
+@       IN      NS      hagrid
+hagrid      IN      A      192.168.14.50

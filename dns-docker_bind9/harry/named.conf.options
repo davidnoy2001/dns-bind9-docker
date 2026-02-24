@@ -1,0 +1,15 @@
+options {
+	directory "/var/cache/bind";
+	dnssec-validation auto;
+	listen-on-v6 { none; };
+};
+
+key "rndc-key" {
+	algorithm hmac-sha256;
+	secret "5ILo8qU+9PtL8iDg4ob7jLm+s/nDft0CDX2BbQvwQ60=";
+};
+
+controls {
+    inet 127.0.0.1 port 953 allow { 127.0.0.1; } keys { "rndc-key"; };
+    inet 192.168.14.10 port 953 allow { 192.168.14.110; } keys { "update-key"; };
+};

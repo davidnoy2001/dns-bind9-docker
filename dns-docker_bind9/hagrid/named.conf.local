@@ -1,0 +1,9 @@
+zone "gryffindor.hogwarts.david" {
+	type primary;
+    file "db.gryffindor.hogwarts.david";
+};
+
+zone "14.21.172.in-addr.arpa" {
+	type primary;
+    file "db.14.21.172";
+};

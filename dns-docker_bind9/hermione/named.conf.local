@@ -1,0 +1,20 @@
+key "hogwarts-cesar" {
+        algorithm hmac-sha256;
+        secret "LplUqSRqYV8gxdn2jN2nER0egodUH++LLeUM/DVHv5A=";
+};
+
+server 192.168.14.10 {
+    keys { "hogwarts-david"; };
+};
+
+zone "hogwarts.cesar" {
+	type secondary;
+    file "db.hogwarts.david";
+    primaries { 192.168.14.10; };
+};
+
+zone "14.168.192.in-addr.arpa" {
+	type secondary;
+    file "db.14.168.192";
+    primaries { 192.168.14.10; };
+};

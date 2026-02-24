@@ -1,0 +1,16 @@
+$TTL    86400
+@       IN      SOA     harry.hogwarts.david. admin.hogwarts.david. (
+                        2           ; Número de serie
+                        3600        ; Actualización (Refresh)
+                        1800        ; Reintento (Retry)
+                        1209600     ; Caducidade (Expire)
+                        86400 )     ; TTL mínimo
+
+; Servidores de nomes
+@       IN      NS      harry.hogwarts.david.
+
+; Rexistros A dos servidores de nomes
+harry     IN      A       192.168.14.10
+
+fred    IN  A   172.21.14.60
+george    IN  A   172.21.14.61

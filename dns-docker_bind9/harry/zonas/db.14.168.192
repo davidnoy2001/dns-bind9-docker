@@ -1,0 +1,22 @@
+;
+; BIND reverse data file for local 192.168.0.XXX net
+;
+$TTL    604800
+@       IN      SOA     harry.hogwarts.david. admin.hogwarts.david. (
+                              9999999999999999999999999         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+; Servidores de nomes
+@       IN      NS      harry.hogwarts.david.
+@       IN      NS      hermione.hogwarts.david.
+
+10      IN      PTR     harry.hogwarts.david.
+11      IN      PTR     hermione.hogwarts.david.
+50      IN      PTR     hagrid.hogwarts.david.
+54      IN      PTR     draco.hogwarts.david.
+154      IN      PTR     ron.hogwarts.david.
+60      IN      PTR     malfoy.hogwarts.david.
+61      IN      PTR     malfoy.hogwarts.david.

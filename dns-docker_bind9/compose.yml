@@ -1,0 +1,73 @@
+services:
+  
+  dumbledore:
+    build: dnsserver
+    hostname: dumbledore
+    command: -f -4
+    volumes:
+      - ./logs/consultas.log:/logs/consultas.log
+    networks:
+      rededns:
+        ipv4_address: 192.168.14.9 
+  harry:
+    build: dnsserver
+    hostname: harry
+    command: -g -4
+    networks:
+      rededns:
+        ipv4_address: 192.168.14.10
+    volumes:
+      - ./harry/named.conf.local:/etc/bind/named.conf.local
+      - ./harry/named.conf.options:/etc/bind/named.conf.options
+      - ./harry/zonas/db.hogwarts.david:/var/cache/bind/db.hogwarts.david
+      - ./harry/zonas/db.14.168.192:/var/cache/bind/db.14.168.192
+
+  hermione:
+    build: dnsserver
+    hostname: hermione
+    depends_on:
+      - harry
+    networks:
+      rededns:
+        ipv4_address: 192.168.14.11      
+    volumes:
+      - ./hermione/named.conf.local:/etc/bind/named.conf.local
+      - ./hermione/named.conf.options:/etc/bind/named.conf.options  
+  hagrid:
+    build: dnsserver
+    hostname: hagrid
+    depends_on:
+      - harry    
+    networks:
+      rededns:
+        ipv4_address: 192.168.14.50  
+    volumes:
+      - ./hagrid/named.conf.local:/etc/bind/named.conf.local
+      - ./hagrid/named.conf.options:/etc/bind/named.conf.options  
+      - ./hagrid/zonas/db.gryffindor.hogwarts.david:/var/cache/bind/db.gryffindor.hogwarts.david
+      - ./hagrid/zonas/db.14.21.172:/var/cache/bind/db.14.21.172
+      
+  snape:
+    build: cliente
+    hostname: snape
+    networks:
+      rededns:
+        ipv4_address: 192.168.14.110
+    volumes:
+      - ./snape:/dns
+      - ./snape/rndc.key:/etc/bind/rndc.key
+      - ./snape/update.key:/etc/update.key
+      - ./snape/rndc.conf:/etc/bind/rndc.conf
+      - ./snape/actualiza.txt:/tmp/actualiza.txt
+      - ./snape/probas.sh:/tmp/probas.sh
+    dns: 
+    - 192.168.14.10
+    - 192.168.14.11
+
+networks:
+  rededns:
+    ipam:
+      config:
+        - subnet: 192.168.14.0/24
+
+

@@ -1,0 +1,4 @@
+server 192.168.14.10
+zone db.hogwarts.david
+update add sirius.hogwarts.david. 3600 A 172.21.14.81
+send

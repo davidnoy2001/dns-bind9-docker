@@ -1,0 +1,20 @@
+options {
+	directory "/var/cache/bind";
+
+	forwarders {
+		10.0.4.1;
+    };
+
+	dnssec-validation auto;
+
+	listen-on-v6 { none; };
+};
+
+logging {
+    channel consultas.log {
+        file "/logs/consultas.log";
+        severity dynamic;
+    };
+
+    category resolver { consultas.log; };
+};

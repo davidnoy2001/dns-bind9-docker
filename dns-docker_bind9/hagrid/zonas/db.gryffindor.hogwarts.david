@@ -1,0 +1,15 @@
+$TTL    86400
+@       IN      SOA     hagrid.gryffindor.hogwarts.david. admin.gryffindor.hogwarts.david. ( ;Subdominio delegado
+                              4         
+                         604800    
+                          86400     
+                        2419200   
+                          86400 )   
+
+@       IN        NS      hagrid.gryffindor.hogwarts.david.
+hagrid      IN      A      192.168.14.50
+neville     IN      A      172.21.14.51
+ginny     IN      A      172.21.14.52
+
+
+

@@ -1,0 +1,25 @@
+key "update-key" {
+        algorithm hmac-sha256;
+        secret "iuBfe+V1C5CYX35/ha+Z/acAyYB+QWk/qh6/VJLQpyE=";
+};
+
+key "hogwarts-david" {
+        algorithm hmac-sha256;
+        secret "LplUqSRqYV8gxdn2jN2nER0egodUH++LLeUM/DVHv5A=";
+};
+
+zone "hogwarts.david" {
+	type primary;
+    file "db.hogwarts.david";
+    allow-transfer { key "hogwarts-david"; };
+    forwarders {};
+    allow-update { key "update-key"; };
+};
+
+zone "14.168.192.in-addr.arpa" {
+	type primary;
+    file "db.14.168.192";
+    allow-transfer { key "hogwarts-david"; };
+    forwarders {};
+    allow-update { key "update-key"; };
+};
